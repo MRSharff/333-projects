@@ -17,7 +17,8 @@ int main(int argc, char *argv[]) {
     FILE *infile = fopen(argv[1],"rb");
 
     if (infile == NULL) {
-
+      printf("File does not exist.\n");
+      return 1;
     }
     FILE *outfile = fopen("doubleSize.bmp","wb");
     FILE *outfile2 = fopen("halfSize.bmp", "wb");
