@@ -5,10 +5,14 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #define OFFSET 23
 
 
 int main(int argc, char *argv[]) {
+
+    char doubleSizeName[50];
+    char halfSizeName[50];
 
     if (argc != 2) {
       return 1;
@@ -20,11 +24,15 @@ int main(int argc, char *argv[]) {
       printf("File does not exist.\n");
       return 1;
     }
-    FILE *outfile = fopen("doubleSize.bmp","wb");
-    FILE *outfile2 = fopen("halfSize.bmp", "wb");
+
+    sprintf(doubleSizeName, "doubleSize_%s", argv[1]);
+    sprintf(halfSizeName, "halfSize_%s", argv[1]);
+
+    FILE *outfile = fopen(doubleSizeName,"wb");
+    FILE *outfile2 = fopen(halfSizeName, "wb");
 
     int r, c, i, j, rCounter, cCounter;
-    int bpp, bppMult;
+    int bpp, bppMult; //bits per pixel
     int fileSize, pixelWidth, pixelHeight, cStay, rStay, newCIndex;
     int doublePixelHeight, doublePixelWidth, halfPixelHeight, halfPixelWidth;
     int doubleFileSize, halfFileSize;
