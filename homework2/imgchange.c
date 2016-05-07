@@ -8,9 +8,17 @@
 #define OFFSET 23
 
 
-int main(void) {
+int main(int argc, char *argv[]) {
 
-    FILE *infile = fopen("test1.bmp","rb");
+    if (argc != 2) {
+      return 1;
+    }
+
+    FILE *infile = fopen(argv[1],"rb");
+
+    if (infile == NULL) {
+
+    }
     FILE *outfile = fopen("doubleSize.bmp","wb");
     FILE *outfile2 = fopen("halfSize.bmp", "wb");
 
@@ -82,7 +90,7 @@ int main(void) {
     printf("Doubled Pixel width: %d\n", doublePixelWidth);
     printf("Doubled Pixel height: %d\n", doublePixelHeight);
     printf("bpp = %d\n", bpp);
-    printf("colorPanes = %d\n", colorPanes);
+    printf("colorPanes = %s\n", colorPanes);
 
 
     //write double size
@@ -125,7 +133,7 @@ int main(void) {
     printf("Halved Pixel width: %d\n", halfPixelWidth);
     printf("Halved Pixel height: %d\n", halfPixelHeight);
     printf("bpp = %d\n", bpp);
-    printf("colorPanes = %d\n", colorPanes);
+    printf("colorPanes = %s\n", colorPanes);
 
 
     //write half size
